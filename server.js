@@ -35,6 +35,28 @@ app.use(function (req, res) {
   });
 });
 
-app.listen(app.get('port'), function () {
+/**
+ * Socket.io stuff.
+ */
+var server = require('http').createServer(app);
+var io = require('socket.io')(server);
+var onlineUsers = 0;
+
+io.sockets.on('connection', function(socket) {
+  onlineUsers++;
+  console.log("There are now " + onlineUsers + "Online users.");
+
+  io.sockets.emit('onlineUsers', { onlineUsers: onlineUsers });
+
+
+  socket.on('disconnect', function() {
+    onlineUsers--;
+    io.sockets.emit('onlineUsers', { onlineUsers: onlineUsers });
+
+    console.log("There are now " + onlineUsers + "Online users.");
+  });
+});
+
+server.listen(app.get('port'), function() {
   console.log('Express server listening on port ' + app.get('port'));
 });
