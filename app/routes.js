@@ -10,5 +10,11 @@ export default (
         <Route path='/' component={Home} />
         <Route path='/add' component={AddCharacter} />
         <Route path='/characters/:id' component={Character} />
+        {/* For example, if we go to http://localhost:3000/female/gallente/intaki */}
+        <Route path=':category' component={CharacterList}>
+            <Route path=':race' component={CharacterList}>
+                <Route path=':bloodline' component={CharacterList} />
+            </Route>
+        </Route>
     </Route>
 );

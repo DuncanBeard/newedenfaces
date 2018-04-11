@@ -134,7 +134,7 @@ app.get('/api/characters', function (req, res, next) {
             return res.send(characters);
           }
 
-          // If npt enough unvoted characters found, set all voted to false.
+          // If not enough unvoted characters found, set all voted to false.
           Character.update({}, { $set: { voted: false } }, { multi: true }, function (err) {
             if (err) return next(err);
             res.send([]);
