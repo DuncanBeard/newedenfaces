@@ -4,12 +4,15 @@ import App from './components/App';
 import Home from './components/Home';
 import AddCharacter from './components/AddCharacter';
 import Character from './components/Character';
+import CharacterList from './components/CharacterList';
+import Stats from './components/Stats';
 
 export default (
     <Route component={App}>
         <Route path='/' component={Home} />
         <Route path='/add' component={AddCharacter} />
         <Route path='/characters/:id' component={Character} />
+        <Route path='/stats' component={Stats} />
         {/* For example, if we go to http://localhost:3000/female/gallente/intaki */}
         <Route path=':category' component={CharacterList}>
             <Route path=':race' component={CharacterList}>
