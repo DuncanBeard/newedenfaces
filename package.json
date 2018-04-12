@@ -4,12 +4,13 @@
   "version": "1.0.0",
   "repository": {
     "type": "git",
-    "url": "https://github.com/sahat/newedenfaces-react"
+    "url": "https://github.com/DuncanBeard/newedenfaces"
   },
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
-    "watch": "nodemon server.js"
+    "watch": "nodemon server.js",
+    "postinstall": "bower install && gulp build"
   },
   "babel": {
     "presets": [
